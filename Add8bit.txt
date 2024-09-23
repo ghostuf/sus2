@@ -1,0 +1,8 @@
+Addition of Two 8 bit numbers
+
+MVI B, 06H       Move immediately data 06H into register B
+MOV A, B         Move the contents of register B into accumulator
+MVI C, 07H       Move immediately data 07H into register C
+ADD C            Add the contents of register C with accumulator
+STA 8500H        Store the contents of accumulator into memory address 8500H
+HLT              Stop the program execution

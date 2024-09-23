@@ -1,0 +1,20 @@
+      LDA 2100H
+      MOV B, A
+      ANI 0FH
+      MOV C, A
+      MOV A, B
+      ANI F0H
+      JZ SKIP
+      RRC
+      RRC
+      RRC
+      RRC
+      MOV D, A
+      XRA A
+      MVI E, 0AH
+SUM:  ADD D
+      DCR E
+      JNZ SUM
+SKIP: ADD C
+      STA 2101H
+      RST-5

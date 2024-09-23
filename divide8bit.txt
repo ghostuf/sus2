@@ -1,0 +1,16 @@
+Assembly program to divide two numbers
+
+2000: MVI C, FFH -> Assign the value of C = FFH
+2001: LXI H, 2050H -> Load the contents of 2050H
+2004: MOV A, M -> Copy the value of memory to A
+2005: INX H -> Increment the memory address
+2006: MOV B, M -> Copy the value of memory to B
+2007: INR C -> Increment the value of C
+2008: SUB B -> Subtract: A - B
+2009: JNC 2007 -> Jump to 2007 when no carry
+200A: ADD B -> Add: A + B
+200B: INX H -> Increment the memory address
+200C: MOV M, C -> Copy the content of C into memory address
+200D: INX H -> Increment the memory address
+200E: MOV M, A -> Copy the value of A into memory
+200F: HLT -> End the program

@@ -1,0 +1,13 @@
+Addition of two 16-bit numbers with carry
+
+1000  LHLD 4000H   Load H-L pair with address 4000H
+1003  XCHG         Exchange H-L pair with D-E pair
+1004  LHLD 4002H   Load H-L pair with address 4002H
+1007  MVI C, 00H   Move the value 00H to register C
+1009  DAD D        Add D-E pair with H-L pair
+100A  JNC 100E     Jump to location 100E if no carry
+100D  INR C        Increment C
+100E  SHLD 4004H   Store the result location at 4004H
+1011  MOV A, C     Move carry from C to A
+1012  STA 4006H    Store the carry at memory address 4006H
+1013  HLT          End the program execution

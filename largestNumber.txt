@@ -1,0 +1,15 @@
+Assembly program to find the largest number
+
+2000: LXI H 2050 -> H ← 20, L ← 50
+2003: MOV C, M -> C ← M
+2004: DCR C -> C ← C - 01
+2005: INX H -> HL ← HL + 0001
+2006: MOV A, M -> A ← M
+2007: INX H -> HL ← HL + 0001
+2008: CMP M -> A - M
+2009: JNC 200D -> If Carry Flag = 0, goto 200D
+200C: MOV A, M -> A ← M
+200D: DCR C -> C ← C - 1
+200E: JNZ 2007 -> If Zero Flag = 0, goto 2007
+2011: STA 3050 -> A → 3050
+2014: HLT -> End the program

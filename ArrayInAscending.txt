@@ -1,0 +1,24 @@
+Assembly program to arrange an array of data in ascending order
+
+LXI H,5000     ; Set pointer for array
+MOV C,M        ; Load the Count
+DCR C          ; Decrement Count
+
+REPEAT: MOV D,C   ; Copy content of memory location to Accumulator
+LXI H,5001
+
+LOOP: MOV A,M     ; Copy content of memory location to Accumulator
+INX H            ; Increment HL pair of registers
+CMP M            ; Compare memory content with Accumulator
+JC SKIP          ; Jump to skip if carry generated
+MOV B,M          ; Copy content of memory location to B-Register
+MOV M,A          ; Copy content of Accumulator to memory location
+DCX H            ; Decrement content of HL pair of registers
+MOV M,B          ; Copy content of B-Register to memory location
+INX H            ; Increment HL pair of registers
+
+SKIP: DCR D        ; Decrement content of Register D
+JNZ LOOP         ; Jump to loop if not equal to zero
+DCR C            ; Decrement Count
+JNZ REPEAT       ; Jump to repeat if not equal to zero
+HLT              ; Terminate Program

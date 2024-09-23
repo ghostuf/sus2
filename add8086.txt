@@ -1,0 +1,19 @@
+Assembly program to add two numbers (8086)
+
+2000    MOV  CX, 0000      ; Load the content 0000 in CX register
+
+2003    MOV  AX, [3000]    ; Move the contents of 3000 and 3001 memory address into AL and AH register respectively.
+
+2007    MOV  BX, [3002]    ; Move the contents of 3002 and 3003 memory address into BL and BH register respectively.
+
+200B    ADD  AX, BX        ; [AX] <- [AX] + [BX]
+
+200D    JNC  2010          ; Jump if no carry
+
+200F    INC  CX            ; [CX] <- [CX] + 1
+
+2010    MOV  [3004], AX    ; [3004] <- [AX]
+
+2014    MOV  [3006], CX    ; [3006] <- [CX]
+
+2018    HLT                ; End the program

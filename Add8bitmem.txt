@@ -1,0 +1,8 @@
+Addition of Two 8 bit numbers stored at memory location
+
+LDA 8500H      Load the content of memory location 8500H into accumulator
+MOV B, A       Move the content of accumulator into register B
+LDA 8501H      Load the content of memory location 8501H into accumulator
+ADD B          Add the content of register B with accumulator
+STA 8502H      Store the content of accumulator into memory address 8502H
+HLT            Stop the program execution
