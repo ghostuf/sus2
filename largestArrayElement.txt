@@ -1,0 +1,39 @@
+ An array containing 5 elements is stored from memory location 4000h to 4000h; write an assembly language program for 8085 microprocessor to find largest element of array and store in memory location 4005h.
+
+ Assembly Language Program
+
+ORG 0000h ; Origin of the program
+
+; Initialize HL to point to the start of the array (4000h)
+LXI H, 4000h
+
+; Initialize the largest element with 00 (assuming values are positive)
+MVI A, 00
+MOV B, A ; Initialize B register to store the largest element
+
+; Loop through the array to find the largest element
+LOOP:
+LHLD ; Load 16-bit data from memory into HL
+MOV C, L ; Copy the lower byte (element) to register C
+MOV D, H ; Copy the higher byte (element) to register D
+
+; Compare the current element with the largest element
+CMP B
+JNC NOT_LARGER ; If not larger, skip the update
+
+; Update the largest element
+MOV B, A
+
+NOT_LARGER:
+INX H ; Move to the next element in the array
+DCR C ; Decrement the loop counter (assuming elements are 8-bit)
+JNZ LOOP ; Continue looping until all elements are checked
+
+; Store the largest element in memory location 4005h
+STAX D ; Store A register (largest element) at the address in DE pair
+HLT ; Halt the program
+
+; Data section (assuming the array is stored from 4000h to 4004h)
+DB 10, 25, 15, 30, 5
+
+END ; End of the program
